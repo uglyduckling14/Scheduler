@@ -25,9 +25,9 @@ public class Assn5 {
             System.out.println("did this!");
         }
 
-        System.out.println("---------------------------------------------------------");
-        demoFCFS();
-        System.out.println();
+//        System.out.println("---------------------------------------------------------");
+//        demoFCFS();
+//        System.out.println();
 
         System.out.println("---------------------------------------------------------");
         demoSJF();
