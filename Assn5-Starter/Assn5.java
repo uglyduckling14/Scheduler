@@ -29,9 +29,9 @@ public class Assn5 {
 //        demoFCFS();
 //        System.out.println();
 
-        System.out.println("---------------------------------------------------------");
-        demoSJF();
-        System.out.println();
+//        System.out.println("---------------------------------------------------------");
+//        demoSJF();
+//        System.out.println();
 
         System.out.println("---------------------------------------------------------");
         demoSRTF();
