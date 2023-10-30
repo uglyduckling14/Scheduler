@@ -16,9 +16,9 @@ public class Assn5 {
     public static void main(String[] args) {
 
         // Setup a Scanner if there is a file given. Otherwise hardcoded defaults are used
-        if (args.length > 0) {
+        if (args.length == 0) {
             String currentDir = System.getProperty("user.dir");
-            java.nio.file.Path filePath = java.nio.file.Paths.get(currentDir, args[0]);
+            java.nio.file.Path filePath = java.nio.file.Paths.get(currentDir,"Assn5-Starter/processes.txt");
             inputFile = new File(filePath.toString());
             
             cpuCount = Integer.parseInt(readSection("cpus").get(0)[0]);

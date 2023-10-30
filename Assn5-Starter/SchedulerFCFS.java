@@ -23,30 +23,25 @@ public class SchedulerFCFS extends Scheduler {
     @Override
     Process update(Process process, int cpu) {
         if(process==null){
-            Process p = queue.peek();
+            Process p = queue.poll();
             logger.log("CPU "+ cpu + " > Scheduled " + p.getName());
             return p;
         }
-        if(process.isBurstComplete() && !process.isExecutionComplete()){
-            logger.log("CPU "+ cpu + " > Process " + process.getName() + " burst complete");
-            contextSwitches++;
-            Process p = queue.poll();
-            if(p!=null && queue.peek()!=null){
-                logger.log("CPU "+ cpu + " > Scheduled " + queue.peek().getName());
-            }
-            queue.add(p);
-            return queue.peek();
+        if(process.isBurstComplete() && !process.isExecutionComplete()) {
+            logger.log("CPU " + cpu + " > Process " + process.getName() + " burst complete");
+            notifyNewProcess(process);
+            logger.log("CPU "+ cpu + " > Scheduled " + queue.peek().getName());
+            contextSwitches+=2;
+            return queue.poll();
         }
         if(process.isExecutionComplete()){
-            logger.log("CPU "+ cpu + " > Process " + process.getName() + " burst complete");
-            logger.log("CPU "+ cpu + " > Process " + process.getName() + " execution complete");
-            Process p = queue.poll();
-            p = queue.peek();
-            if(p!=null){
-                logger.log("CPU "+ cpu + " > Scheduled " + p.getName());
+            logger.log("CPU " + cpu + " > Process " + process.getName() + " burst complete");
+            logger.log("CPU " + cpu + " > Process " + process.getName() + " execution complete");
+            if(queue.peek()!=null) {
+                logger.log("CPU " + cpu + " > Scheduled " + queue.peek().getName());
             }
-            contextSwitches++;
-            return p;
+            contextSwitches+=2;
+            return queue.poll();
         }
         return process;
     }
