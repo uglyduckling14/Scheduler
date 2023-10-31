@@ -37,9 +37,9 @@ public class Assn5 {
 //        demoSRTF();
 //        System.out.println();
 
-        System.out.println("---------------------------------------------------------");
-        demoPriority();
-        System.out.println();
+//        System.out.println("---------------------------------------------------------");
+//        demoPriority();
+//        System.out.println();
 
         System.out.println("---------------------------------------------------------");
         demoRR();
